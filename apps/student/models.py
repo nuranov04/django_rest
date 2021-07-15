@@ -23,14 +23,14 @@ class Student(models.Model):
         return f"{self.surname}"
 
 
+def __str__(self):
+    return f"{self.first_name}"
+
+
 class Meta:
     verbose_name = "Студент"
     verbose_name_plural = "Студенты"
     ordering = ('-id',)
-
-
-def __str__(self):
-    return f"{self.user.email} | student"
 
 
 @receiver(post_save, sender=User)

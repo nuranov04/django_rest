@@ -5,4 +5,4 @@ from apps.teacher.models import Teacher
 class TeacherListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Teacher
-        fields = "__all__"
+        fields = '__all__'

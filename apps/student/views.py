@@ -13,8 +13,3 @@ from rest_framework.response import Response
 class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentListSerializer
-
-    @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
-    def highlight(self, request, *args, **kwargs):
-        student = self.get_object()
-        return Response(student.highlighed)

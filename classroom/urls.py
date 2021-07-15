@@ -18,24 +18,24 @@ from django.urls import path
 from django.urls.conf import include
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import api_root
 
-
-# api_urlpatterns = [
-#     path('users', include('apps.users.urls')),
-#
-# ]
-
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
-    path('', include('apps.users.urls')),
-    path('teachers/', include('apps.teacher.urls')),
-    path('students/', include('apps.student.urls')),
-    path('courses/', include('apps.course.urls'))
+api_urlpatterns = [
+    path('', api_root),
+    path('api/courses/', include('apps.course.urls')),
+    path('api/users/', include('apps.users.urls')),
+    path('api/teachers/', include('apps.teacher.urls')),
+    path('api/students/', include('apps.student.urls')),
 
 ]
 
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include(api_urlpatterns)),
+    path('api-auth/', include('rest_framework.urls')),
+
+
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

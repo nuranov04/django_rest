@@ -19,9 +19,3 @@ class TeacherViewSet(viewsets.ModelViewSet):
     """
     queryset = Teacher.objects.all()
     serializer_class = TeacherListSerializer
-
-    @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
-    def highlight(self, request, *args, **kwargs):
-        teacher = self.get_object()
-        return Response(teacher.highlighted)
-
