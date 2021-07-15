@@ -2,6 +2,7 @@ from django.db import models
 from pygments.formatters.html import HtmlFormatter
 from pygments.lexers import get_lexer_by_name
 from django.contrib.auth import get_user_model
+from apps.teacher.models import Teacher
 
 User = get_user_model()
 
@@ -12,7 +13,7 @@ class Course(models.Model):
         verbose_name='Название курса'
     )
     description = models.TextField()
-    owner = models.ForeignKey(User, related_name='courses', on_delete=models.CASCADE)
+    owner = models.ForeignKey(Teacher, related_name='courses', on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.course}'

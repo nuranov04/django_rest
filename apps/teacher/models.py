@@ -18,6 +18,11 @@ class Teacher(models.Model):
     sphere = models.CharField(
         max_length=50
     )
+    email = models.EmailField()
+    password = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.first_name}'
 
     class Meta:
         verbose_name = "Учитель"
